@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "envoltoriza"
+version = "0.1.0"
+description = ""
+authors = ["Gregory <gregoryvega4@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+django = "^4.2.3"
+dj-database-url = "^2.0.0"
+psycopg2-binary = "^2.9.6"
+whitenoise = {extras = ["brotli"], version = "^6.5.0"}
+gunicorn = "^21.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

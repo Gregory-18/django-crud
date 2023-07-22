@@ -1,0 +1,283 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Zay Shop - Product Detail Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="{% static 'img/apple-icon.png' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/templatemo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+
+    <!-- Slick -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}">
+    <!--
+    
+TemplateMo 559 Zay Shop
+
+https://templatemo.com/tm-559-zay-shop
+
+-->
+</head>
+
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-light shadow">
+    <div class="container d-flex justify-content-between align-items-center">
+
+        <a class="navbar-brand text-success logo h1 align-self-center" href="{% url 'index' %}">
+            Zay
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+            id="templatemo_main_nav">
+            <div class="flex-fill">
+                <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'shop_single' %}">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar align-self-center d-flex">
+                <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
+                        <div class="input-group-text">
+                            <i class="fa fa-fw fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+                <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
+                    data-bs-target="#templatemo_search">
+                    <i class="fa fa-fw fa-search text-dark mr-2"></i>
+                </a>
+                <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                    <span
+                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                </a>
+                <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                    <span
+                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+<!-- Close Header -->
+
+<!-- Modal -->
+<div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="w-100 pt-1 mb-5 text-right">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="" method="get" class="modal-content modal-body border-0 p-0">
+            <div class="input-group mb-2">
+                <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                <button type="submit" class="input-group-text bg-success text-light">
+                    <i class="fa fa-fw fa-search text-white"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<!-- Open Content -->
+<section class="bg-light">
+    <div class="container pb-5">
+        {% for caja in cajas %}
+        <div class="row mb-5 align-items-center justify-content-center">
+            <div class="col-lg-5 mt-5">
+                <div class="card mb-3">
+                    <img class="card-img img-fluid" src="{{ caja.imagenes.first.imagen.url }}" alt="Card image cap"
+                        id="product-detail">
+                </div>
+            </div>
+            <!-- col end -->
+            <div class="col-lg-7 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="h2" id="caja_nombre">{{ caja.nombre }}</h1>
+                        <p class="h3 py-2" id="caja_precio">${{ caja.precio }}</p>
+
+                        <h6>Description:</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua. Quis ipsum suspendisse. Donec condimentum elementum
+                            convallis. Nunc sed orci a diam ultrices aliquet interdum quis nulla.</p>
+                        <!-- <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <h6>Available Colors:</h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <ul class="list-inline">
+                                    {% for color in caja.colores_lista %}
+                                    <li class="list-inline-item color-box" style="background-color: {{ color }}">
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul> -->
+
+                        <h6>Caracteristicas:</h6>
+                        <ul class="list-unstyled pb-3">
+                            <li id="caja_alto">Height: {{ caja.alto }} cm</li>
+                            <li id="caja_ancho">Width: {{ caja.ancho }} cm</li>
+                            <li id="caja_largo">Length: {{ caja.largo }} cm</li>
+                            <li id="caja_material">Material: {{ caja.material_utilizado }}</li>
+                        </ul>
+
+                        <form action="" method="GET">
+                            <input type="hidden" name="product-title" value="{{ caja.nombre }}">
+                            <input type="hidden" id="caja_imagen" value="{{ caja.imagenes.first.imagen.url }}">
+                            <div class="row">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">Colores Disponibles:</li>
+                                    <!-- <li class="list-inline-item">
+                                        <ul class="list-inline">
+                                            {% for color in caja.colores_lista %}
+                                            <li class="list-inline-item">
+                                                <span class="btn btn-success btn-size color-btn"
+                                                    style="background-color: {{ color }} !important;"></span>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li> -->
+                                    <div class="col-auto">
+                                        <ul class="list-inline pb-3">
+                                            <!-- <li class="list-inline-item">Colores :</li> -->
+                                            <li class="list-inline-item mt-2">
+                                                <ul class="list-inline color-list">
+                                                    {% for color in caja.colores_lista %}
+                                                    <li class="list-inline-item">
+                                                        <label>
+                                                            <input type="checkbox" class="color-checkbox"
+                                                                value="{{ color }}" style="display: none;">
+                                                            <span class="btn btn-success btn-size color-btn"
+                                                                style="background-color: {{ color }} !important; width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff !important; cursor: pointer;"></span>
+                                                        </label>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <style>
+                                        /* Estilo para el color seleccionado */
+                                        .color-checkbox:checked+.color-btn {
+                                            opacity: 1 !important;
+                                        }
+
+                                        /* Estilo para los colores no seleccionados */
+                                        .color-btn {
+                                            width: 30px !important;
+                                            height: 30px !important;
+                                            border-radius: 50% !important;
+                                            border: 2px solid #fff !important;
+                                            cursor: pointer !important;
+                                            opacity: 0.5 !important;
+                                            transition: opacity 0.3s !important;
+                                        }
+
+                                        .color-checkbox:not(:checked)+.color-btn {
+                                            opacity: 0.5 !important;
+                                        }
+                                    </style>
+
+
+
+
+
+
+
+                                </ul>
+                                <div class="col-auto">
+                                    <ul class="list-inline pb-3">
+                                        <li class="list-inline-item text-right">Cantidas :
+                                            <!-- Eliminamos las flechas del input de cantidad -->
+
+                                            <input type="number" name="caja_cantidad" id="caja_cantidad" value="1"
+                                                min="1" style="
+                                                    width: 70px;
+                                                    text-align: center;
+                                                    padding: 5px;
+                                                    border: 1px solid #cccccc9e;
+                                                    border-radius: 3px;
+                                                    margin-right: 10px;
+                                            ">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row pb-3">
+                                <div class="col d-grid">
+                                    <button id="submit" type="submit" class="btn btn-success btn-lg" name="submit"
+                                        value="buy">Buy</button>
+                                </div>
+                                <div class="col d-grid">
+                                    <button type="submit" class="btn btn-success btn-lg" name="submit"
+                                        value="addtocart">Add To Cart</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+<!-- Close Content -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap -->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<!-- Slick -->
+<script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+<!-- Custom -->
+<script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+<!-- 
+<script>
+    function changeMainImage(imageUrl) {
+        var mainImage = document.getElementById('product-detail');
+        mainImage.src = imageUrl;
+    }
+</script> -->
+
+</body>
+
+</html>
